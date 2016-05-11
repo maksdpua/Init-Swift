@@ -6,8 +6,8 @@ class Student1 {
     }
     
     init() {
-        self.firstName = String()
-        self.lastName = String()
+        firstName = String()
+        lastName = String()
     }
 }
 
@@ -40,9 +40,23 @@ class Student5 {
     }
 }
 
-class Student6: Student5 {
-    override init() {
-        maxAge = 110
+//class Student6: Student5 {
+//    override init() {
+//        maxAge = 110
+//    }
+//}
+
+struct Student7 {
+    var firstName : String
+    var lastName : String
+    init() {
+        firstName = ""
+        lastName = ""
+    }
+    
+    init(firstName: String, lastName: String) {
+        self.firstName = firstName
+        self.lastName = lastName
     }
 }
 
@@ -50,3 +64,58 @@ let s1 = Student1()
 let s2 = Student2()
 let s3 = Student3(firstName: "AL", lastName: "Kirk")
 let s5 = Student5()
+let s7 = Student7(firstName: "John", lastName: "Feris")
+
+
+/////////////////
+
+class Human {
+    var weight : Int
+    var age : Int
+    
+    init(weight: Int, age: Int) {
+        self.weight = weight
+        self.age = age
+    }
+    convenience init(age: Int) {
+        self.init(weight: 0, age: age)
+    }
+    convenience init(weight: Int) {
+        self.init(weight: weight, age: 0)
+    }
+    convenience init() {
+        self.init(weight: 0)
+    }
+    
+    func test() {
+        
+    }
+}
+
+let h1 = Human(weight: 70, age: 25)
+let h2 = Human(weight: 70, age: 25)
+let h3 = Human()
+
+class Student: Human {
+    var firstName : String
+    var lastName : String
+    
+    init(firstName: String, lastName: String) {
+        self.firstName = firstName
+        self.lastName = lastName
+        super.init(weight: 0, age: 0)
+        test()
+        self.weight = 99
+    }
+    
+    convenience init(firstName: String) {
+        self.init(firstName: firstName, lastName: "")
+        self.age = 25
+        self.weight = 50
+        test()
+    }
+}
+
+let student = Student(firstName: "a", lastName: "2")
+let student2 = Student(firstName: "2")
+
