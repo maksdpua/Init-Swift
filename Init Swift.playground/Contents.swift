@@ -319,10 +319,10 @@ class Person {
 
 let p = Person()
 
-p.cars![0]
-p.house!
-
-p.house!.garage!.size
+//p.cars![0]
+//p.house!
+//
+//p.house!.garage!.size
 
 if let house = p.house {
     if let garage = house.garage {
@@ -330,5 +330,71 @@ if let house = p.house {
     }
 }
 
-p.house?.garage?.size
+if (p.house?.garage?.size = 3) != nil {
+    print("upgrade!")
+} else {
+    print("failure!")
+}
+
+p.house?.garage?.size = 10
+print(p.house?.garage?.size)
+
+//(p.cars?[0].model)!
+
+
+if p.cars?[0].start() != nil {
+    print("start")
+} else {
+    print("fail")
+}
+
+class Symbol {
+    
+}
+
+class A: Symbol {
+    func aa() {
+        
+    }
+}
+
+class B: Symbol {
+    func bb() {
+        
+    }
+}
+
+let array35 : [Symbol] = [A(), B(), Symbol(), A(), A(),B()]
+
+var aCount = 0
+var bCount = 0
+var sCount = 0
+
+for value in array35 {
+    
+    if value is A {
+        
+        let a = value as! A
+        
+        aCount += 1
+    } else if value is B {
+        bCount += 1
+    } else {
+        sCount += 1
+    }
+    
+    if let a = value as? A {
+        a.aa()
+    } else if let b = value as? B {
+        b.bb()
+    }
+    
+    
+    
+}
+
+aCount
+bCount
+sCount
+
 
