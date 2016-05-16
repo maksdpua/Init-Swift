@@ -364,7 +364,7 @@ class B: Symbol {
     }
 }
 
-let array35 : [Symbol] = [A(), B(), Symbol(), A(), A(),B()]
+let array35 : [Any] = [A(), B(), Symbol(), A(), A(),B(), "a", 5, {() -> () in return}]
 
 var aCount = 0
 var bCount = 0
@@ -381,6 +381,19 @@ for value in array35 {
         bCount += 1
     } else {
         sCount += 1
+    }
+    
+    if let fun = value as? ()->() {
+        print("tada")
+        fun()
+    }
+    
+    if value is String {
+        print("tada")
+    }
+    
+    if value is Int {
+        print("tada")
     }
     
     if let a = value as? A {
